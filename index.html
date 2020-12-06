@@ -25,15 +25,19 @@
               <br />
               <li id="description">Partly cloudy</li>
               <br />
-              <li>Feels like: <span id="feels">43°</span></li>
+              <li>Feels like: <span id="feels">43</span>°</li>
               <br />
             </ul>
           </div>
-          <div class="col-4 p-4">
-            <p class="part-sun">🌤</p>
-            <h2 class="temperature" id="tempNow">55</h2>
-            <span class="fahrenheit" id="fahrenheit-link">°F | </span>
-            <span class="celcius" id="celcius-link"><a href="#">°C</a></span>
+          <div class="col-4">
+            <div class="weather-temperature">
+            <img src="" alt="" class="icon" id="icon"></img><h2 class="temperature" id="tempNow"> 🌤 55</h2>
+            <span class="units">
+              <a href="#"
+               id="fahrenheit-link" class="active">°F</a> |
+              <a href="#"
+               id="celcius-link" class="active">°C</a></span>
+            </div>
           </div>
           <div class="col-5">
             <ul>
@@ -67,75 +71,47 @@
         <div class="row">
           <div class="col">
             <span class="city">Barcelona</span>
+            <br />            
+            <img src="" alt="" class="iconBCN" id="iconBCN"></img>
             <br />
-            <p class="city-emoji">☀️</p>
-            <br />
-            <span class="high-temperature">69°</span>
-            <span class="low-temperature">54°</span>
+            <span class="high-temperature" id="max-temp-BCN">69°</span>
+            <span class="low-temperature" id="min-temp-BCN">54°</span>
           </div>
           <div class="col">
-            <span class="city">Chicago</span>
+            <span class="city">Chicago
+            </span>
             <br />
-            <p class="city-emoji">🌨️</p>
+            <img src="" alt="" class="iconChicago" id="iconChicago"></img>
             <br />
-            <span class="high-temperature">68°</span>
-            <span class="low-temperature">53°</span>
+            <span class="high-temperature" id="max-temp-Chicago">68°</span>
+            <span class="low-temperature" id="min-temp-Chicago">53°</span>
           </div>
           <div class="col">
             <span class="city">Berlin</span>
             <br />
-            <p class="city-emoji">⛈</p>
+            <img src="" alt="" class="iconBerlin" id="iconBerlin"></img>
             <br />
-            <span class="high-temperature">55°</span>
-            <span class="low-temperature">49°</span>
+            <span class="high-temperature" id="max-temp-Berlin">55°</span>
+            <span class="low-temperature" id="min-temp-Berlin">49°</span>
           </div>
         </div>
       </h3>
-      <div class="forecast">
-        <span class="forecast-header"> 5-day forecast</span>
-        <div class="row">
-          <div class="col">
-            <strong>Wed</strong>
-            <br />
-            <p class="forecast-emoji">🌧</p>
-            <br />
-            <span class="high-temperature-f">53°</span>
-            <span class="low-temperature-f">45°</span>
-          </div>
-          <div class="col">
-            <strong>Thurs</strong>
-            <br />
-            <p class="forecast-emoji">☁️</p>
-            <br />
-            <span class="high-temperature-f">51°</span>
-            <span class="low-temperature-f">47°</span>
-          </div>
-          <div class="col">
-            <strong>Fri</strong>
-            <br />
-            <p class="forecast-emoji">🌧</p>
-            <br />
-            <span class="high-temperature-f">47°</span>
-            <span class="low-temperature-f">40°</span>
-          </div>
-          <div class="col">
-            <strong>Sat</strong>
-            <br />
-            <p class="forecast-emoji">☀️</p>
-            <br />
-            <span class="high-temperature-f">49°</span>
-            <span class="low-temperature-f">42°</span>
-          </div>
-          <div class="col">
-            <strong>Sun</strong>
-            <br />
-            <p class="forecast-emoji">🌤</p>
-            <br />
-            <span class="high-temperature-f">52°</span>
-            <span class="low-temperature-f">47°</span>
-          </div>
-        </div>
+
+      <div class="row weather-forecast">
+        <div class="col-2">
+          <h5>
+            12:00
+            </h5>
+            <img src ="http://openweathermap.org/img/wn/01d@2x.png"
+            alt=""
+            />
+            <div class="weather-forecast-temperature">  
+              <strong>22°</strong> 17°
+            </div>     
       </div>
+      </div>
+
+
       <footer>
         <div class="signature">
           <small>
