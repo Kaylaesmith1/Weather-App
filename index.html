@@ -31,7 +31,8 @@
           </div>
           <div class="col-4">
             <div class="weather-temperature">
-            <img src="" alt="" class="icon" id="icon"></img><h2 class="temperature" id="tempNow"> 🌤 55</h2>
+            <img src="" alt="" class="icon" id="icon"></img><h2 class="temperature" id="tempNow"><img src ="http://openweathermap.org/img/wn/02d@2x.png"
+            />55</h2>
             <span class="units">
               <a href="#"
                id="fahrenheit-link" class="active">°F</a> |
@@ -72,7 +73,8 @@
           <div class="col">
             <span class="city">Barcelona</span>
             <br />            
-            <img src="" alt="" class="iconBCN" id="iconBCN"></img>
+            <img src="" alt="" class="iconBCN"></img><img src ="http://openweathermap.org/img/wn/50n@2x.png" id="iconBCN"
+            />
             <br />
             <span class="high-temperature" id="max-temp-BCN">69°</span>
             <span class="low-temperature" id="min-temp-BCN">54°</span>
@@ -81,7 +83,8 @@
             <span class="city">Chicago
             </span>
             <br />
-            <img src="" alt="" class="iconChicago" id="iconChicago"></img>
+            <img src="" alt="" class="iconChicago"></img><img src="" alt="" class="iconChicago"></img><img src ="http://openweathermap.org/img/wn/11d@2x.png" id="iconChicago"
+            />
             <br />
             <span class="high-temperature" id="max-temp-Chicago">68°</span>
             <span class="low-temperature" id="min-temp-Chicago">53°</span>
@@ -89,7 +92,8 @@
           <div class="col">
             <span class="city">Berlin</span>
             <br />
-            <img src="" alt="" class="iconBerlin" id="iconBerlin"></img>
+            <img src="" alt="" class="iconBerlin"></img><img src ="http://openweathermap.org/img/wn/09n@2x.png" id="iconBerlin"
+            />
             <br />
             <span class="high-temperature" id="max-temp-Berlin">55°</span>
             <span class="low-temperature" id="min-temp-Berlin">49°</span>
@@ -97,20 +101,61 @@
         </div>
       </h3>
 
-      <div class="row weather-forecast">
+      <div class="row weather-forecast" id="forecast">
         <div class="col-2">
-          <h5>
-            12:00
-            </h5>
+          <strong>12:00</strong>
             <img src ="http://openweathermap.org/img/wn/01d@2x.png"
-            alt=""
             />
             <div class="weather-forecast-temperature">  
-              <strong>22°</strong> 17°
-            </div>     
+              <span class="high-temperature-f">22°</span><span class="low-temperature-f"> 17°</span>
+            </div>    
+          </div>
+          <div class="col-2">
+      <strong>15:00</strong>
+      <br />
+      <img src ="http://openweathermap.org/img/wn/09d@2x.png"
+            />
+      <br />
+      <span class="high-temperature-f">53°</span>
+      <span class="low-temperature-f">45°</span>
+    </div>
+    <div class="col-2">
+      <strong>18:00</strong>
+      <br />
+      <img src ="http://openweathermap.org/img/wn/13n@2x.png"
+            />
+      <br />
+      <span class="high-temperature-f">51°</span>
+      <span class="low-temperature-f">47°</span>
+    </div>
+    <div class="col-2">
+      <strong>21:00</strong>
+      <br />
+      <img src ="http://openweathermap.org/img/wn/02n@2x.png"
+            />
+      <br />
+      <span class="high-temperature-f">47°</span>
+      <span class="low-temperature-f">40°</span>
+    </div>
+    <div class="col-2">
+      <strong>00:00</strong>
+      <br />
+      <img src ="http://openweathermap.org/img/wn/50n@2x.png"
+            />
+      <br />
+      <span class="high-temperature-f">49°</span>
+      <span class="low-temperature-f">42°</span>
+    </div>
+    <div class="col-2">
+      <strong>3:00</strong>
+      <br />
+      <img src ="http://openweathermap.org/img/wn/01n@2x.png"
+            />
+      <br />
+      <span class="high-temperature-f">52°</span>
+      <span class="low-temperature-f">47°</span>
+    </div>
       </div>
-      </div>
-
 
       <footer>
         <div class="signature">
@@ -123,6 +168,7 @@
             by Kayla Smith</small
           >
         </div>
+        </div>
       </footer>
     </div>
   </body>
@@ -130,7 +176,6 @@
     src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"
-    src="/Users/kaylasmith/Desktop/Coding Work/WeatherApp.js"
   ></script>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
