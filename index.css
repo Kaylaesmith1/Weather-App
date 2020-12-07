@@ -29,6 +29,7 @@ li .values {
   padding: 0 70px;
   letter-spacing: 2px;
 }
+
 h4 {
   max-width: 70%;
   color: #52ae54;
@@ -39,10 +40,6 @@ h2,
 p,
 ul {
   display: inline;
-}
-.part-sun {
-  font-size: 70px;
-  padding: 30px auto;
 }
 
 h2 {
@@ -67,7 +64,9 @@ p {
 .recently-searched {
   text-align: center;
   max-width: 60%;
+  margin-left: 10px;
 }
+
 .city {
   color: #8ec451;
   font-weight: normal;
@@ -78,20 +77,25 @@ p {
   font-size: 40px;
   text-align: center;
 }
-.fahrenheit,
-.celcius {
-  font-size: 14px;
+
+.weather-temperature .units {
+  font-size: 16px;
+  position: relative;
+  top: -34px;
   color: #666666;
 }
 
-.celcius:hover {
-  color: #acb2be;
-  cursor: pointer;
+.weather-temperature .active {
+  cursor: default;
+  color: #666666;
 }
-.fahrenheit:hover {
-  color: #acb2be;
-  cursor: pointer;
+
+.weather-temperature .active:hover {
+  cursor: default;
+  color: #666666;
+  text-decoration: none;
 }
+
 .search-current,
 .search-city,
 .search {
@@ -128,18 +132,19 @@ button:hover {
   letter-spacing: 1px;
 }
 
-.forecast {
+.weather-forecast {
   color: #596aca;
-  font-size: 22px;
+  font-size: 24px;
   border: 4px solid #9ba6df;
   border-radius: 10px;
   padding: 15px;
+  margin-top: 20px;
   margin-bottom: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
 }
-.forecast-header {
-  font-weight: bold;
-  font-size: 28px;
-}
+
 .high-temperature {
   color: #596aca;
   font-size: 14px;
@@ -172,4 +177,9 @@ button:hover {
 .border {
   border: 4px solid #666666;
   border-radius: 10px;
+}
+
+.forecast-time {
+  color: #596aca;
+  font-size: 22px;
 }
