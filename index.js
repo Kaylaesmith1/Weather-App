@@ -23,6 +23,15 @@ let days = [
 let now = days[today.getDay()];
 currentTime.innerHTML = `${now} ${hours}:${minutes}`;
 
+let fahrenheitTemperature = null;
+let feels = null;
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", convertToCelcius);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
 function convertToCelcius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#tempNow");
@@ -32,6 +41,17 @@ function convertToCelcius(event) {
   let celciusFeelsElement = document.querySelector("#feels");
   let celciusTemperatureFeels = ((feels - 32) * 5) / 9;
   celciusFeelsElement.innerHTML = Math.round(celciusTemperatureFeels);
+
+  let fahrenheitForecastMax = document.querySelectorAll("#forecastMax");
+  fahrenheitForecastMax.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+  let fahrenheitForecastMin = document.querySelectorAll("#forecastMin");
+  fahrenheitForecastMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
 
   fahrenheitLink.classList.remove("active");
   celciusLink.classList.add("active");
@@ -46,18 +66,21 @@ function convertToFahrenheit(event) {
   let fahrenheitTemperatureFeels = feels;
   fahrenheitFeelsElement.innerHTML = Math.round(fahrenheitTemperatureFeels);
 
+  let fahrenheitForecastMax = document.querySelectorAll("#forecastMax");
+  fahrenheitForecastMax.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round(currentTemp);
+  });
+
+  let fahrenheitForecastMin = document.querySelectorAll("#forecastMin");
+  fahrenheitForecastMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round(currentTemp);
+  });
+
   fahrenheitLink.classList.add("active");
   celciusLink.classList.remove("active");
 }
-
-let fahrenheitTemperature = null;
-let feels = null;
-
-let celciusLink = document.querySelector("#celcius-link");
-celciusLink.addEventListener("click", convertToCelcius);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 function currentWeather(response) {
   fahrenheitTemperature = response.data.main.temp;
@@ -117,9 +140,12 @@ function searchCityWeather(event) {
 let searchButton = document.querySelector("#searching");
 searchButton.addEventListener("submit", searchCityWeather);
 
+let lat = null;
+let lon = null;
+
 function myLocation(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
+  lat = position.coords.latitude;
+  lon = position.coords.longitude;
 
   let apiKey = "c5ec52f93b5c1b4b6fe696ad9119316f";
   let units = "imperial";
@@ -301,10 +327,10 @@ function displayForecast(response) {
             }@2x.png"
             />  
             <div class="weather-forecast-temperature">  
-              <span class="high-temperature-f">
+              <span class="forecastMax">
               ${Math.round(forecast.main.temp_max)}°
               </span> 
-              <span class="low-temperature-f">${Math.round(
+              <span class="forecastMin">${Math.round(
                 forecast.main.temp_min
               )}°</span>
             </div>  
@@ -344,15 +370,15 @@ let fahrenheitLinkForecast = document.querySelector("#fahrenheit-link");
 fahrenheitLinkForecast.addEventListener("click", searchForecast);
 
 function myLocationForecast(position) {
-  let latForecast = position.coords.latitude;
-  let lonForecast = position.coords.longitude;
+  lat = position.coords.latitude;
+  lon = position.coords.longitude;
 
   let apiKey = "c5ec52f93b5c1b4b6fe696ad9119316f";
   let units = "imperial";
   let apiEndpointForecastCurrent =
     "https://api.openweathermap.org/data/2.5/forecast";
 
-  let apiUrlForecastCurrent = `${apiEndpointForecastCurrent}?lat=${latForecast}&lon=${lonForecast}&appid=${apiKey}&units=${units}`;
+  let apiUrlForecastCurrent = `${apiEndpointForecastCurrent}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrlForecastCurrent).then(displayForecast);
 }
 
@@ -363,19 +389,14 @@ let searchCurrentForecast = document.querySelector("#search-current");
 searchCurrentForecast.addEventListener("click", getCurrentPositionForecast);
 
 function myLocationForecastCelcius(position) {
-  let latForecastC = position.coords.latitude;
-  let lonForecastC = position.coords.longitude;
+  lat = position.coords.latitude;
+  lon = position.coords.longitude;
 
   let apiKey = "c5ec52f93b5c1b4b6fe696ad9119316f";
   let units = "metric";
   let apiEndpointForecastCurrent =
     "https://api.openweathermap.org/data/2.5/forecast";
 
-  let apiUrlForecastCurrent = `${apiEndpointForecastCurrent}?lat=${latForecastC}&lon=${lonForecastC}&appid=${apiKey}&units=${units}`;
+  let apiUrlForecastCurrent = `${apiEndpointForecastCurrent}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrlForecastCurrent).then(displayForecast);
 }
-
-let celciusLinkForecastMyLoc = document.querySelector("#celcius-link");
-celciusLinkForecastMyLoc.addEventListener("click", myLocationForecastCelcius);
-let fahrenheitLinkForecastMyLoc = document.querySelector("#fahrenheit-link");
-fahrenheitLinkForecastMyLoc.addEventListener("click", myLocationForecast);
