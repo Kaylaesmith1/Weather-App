@@ -42,12 +42,12 @@ function convertToCelcius(event) {
   let celciusTemperatureFeels = ((feels - 32) * 5) / 9;
   celciusFeelsElement.innerHTML = Math.round(celciusTemperatureFeels);
 
-  let fahrenheitForecastMax = document.querySelectorAll("#forecastMax");
+  let fahrenheitForecastMax = document.querySelectorAll(".forecastMax");
   fahrenheitForecastMax.forEach(function (item) {
     let currentTemp = item.innerHTML;
     item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
   });
-  let fahrenheitForecastMin = document.querySelectorAll("#forecastMin");
+  let fahrenheitForecastMin = document.querySelectorAll(".forecastMin");
   fahrenheitForecastMin.forEach(function (item) {
     let currentTemp = item.innerHTML;
     item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
@@ -55,6 +55,9 @@ function convertToCelcius(event) {
 
   fahrenheitLink.classList.remove("active");
   celciusLink.classList.add("active");
+
+  celciusLink.removeEventListener("click", convertToCelcius);
+  fahrenheitLink.addEventListener("click", convertToFahrenheit);
 }
 
 function convertToFahrenheit(event) {
@@ -66,20 +69,24 @@ function convertToFahrenheit(event) {
   let fahrenheitTemperatureFeels = feels;
   fahrenheitFeelsElement.innerHTML = Math.round(fahrenheitTemperatureFeels);
 
-  let fahrenheitForecastMax = document.querySelectorAll("#forecastMax");
+  let fahrenheitForecastMax = document.querySelectorAll(".forecastMax");
   fahrenheitForecastMax.forEach(function (item) {
     let currentTemp = item.innerHTML;
-    item.innerHTML = Math.round(currentTemp);
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
   });
 
-  let fahrenheitForecastMin = document.querySelectorAll("#forecastMin");
+  let fahrenheitForecastMin = document.querySelectorAll(".forecastMin");
   fahrenheitForecastMin.forEach(function (item) {
     let currentTemp = item.innerHTML;
-    item.innerHTML = Math.round(currentTemp);
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
   });
 
   fahrenheitLink.classList.add("active");
   celciusLink.classList.remove("active");
+
+  // disable the events to avoid multiple conversion
+  celciusLink.addEventListener("click", convertToCelcius);
+  fahrenheitLink.removeEventListener("click", convertToFahrenheit);
 }
 
 function currentWeather(response) {
@@ -328,11 +335,10 @@ function displayForecast(response) {
             />  
             <div class="weather-forecast-temperature">  
               <span class="forecastMax">
-              ${Math.round(forecast.main.temp_max)}°
-              </span> 
+              ${Math.round(forecast.main.temp_max)}</span>°
               <span class="forecastMin">${Math.round(
                 forecast.main.temp_min
-              )}°</span>
+              )}</span>°
             </div>  
       </div>
       `;
@@ -363,11 +369,6 @@ function searchForecastCelcius(event) {
   let apiUrlForecast = `${apiEndpointForecast}?q=${inputCity}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrlForecast).then(displayForecast);
 }
-
-let celciusLinkForecast = document.querySelector("#celcius-link");
-celciusLinkForecast.addEventListener("click", searchForecastCelcius);
-let fahrenheitLinkForecast = document.querySelector("#fahrenheit-link");
-fahrenheitLinkForecast.addEventListener("click", searchForecast);
 
 function myLocationForecast(position) {
   lat = position.coords.latitude;

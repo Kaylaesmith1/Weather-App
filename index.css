@@ -149,15 +149,25 @@ button:hover {
   color: #596aca;
   font-size: 14px;
 }
-.low-temperature {
-  color: #acb2be;
-  font-size: 14px;
-}
 .high-temperature-f {
   color: #596aca;
   font-size: 22px;
 }
+.low-temperature {
+  color: #acb2be;
+  font-size: 14px;
+}
+
 .low-temperature-f {
+  color: #acb2be;
+  font-size: 22px;
+}
+
+.forecastMax {
+  color: #596aca;
+  font-size: 22px;
+}
+.forecastMin {
   color: #acb2be;
   font-size: 22px;
 }
